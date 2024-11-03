@@ -162,17 +162,7 @@ var allowedReferrers = [
         "https://pay-yourinspireit.github.io/login/"
 ];
 
-// যদি আগের পেজের URL অনুমোদিত তালিকায় না থাকে তাহলে রিডাইরেক্ট করবে
-var isAllowed = allowedReferrers.some(function(url) {
-    return referrer.includes(url);
-});
-
-if (!isAllowed || !referrer) {
-    alert("You are being redirected because you did not come from an authorized page.");
-    window.location.href = "https://pay-yourinspireit.github.io";
-}
-
 
   </script>
 </body>
-  </html>
+</html>
