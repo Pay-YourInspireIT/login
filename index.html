@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Your Inspire IT Wallet</title>
+    <!-- Updated Title -->
+    <title>Login or Sign Up - Your Inspire IT Wallet</title>
     <!-- Link to Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Link to Google Fonts -->
@@ -14,38 +15,48 @@
     <style>
         /* --- THEME: e-wallet (Dark Mode Base) --- */
         :root {
-            --primary-bg: #0f172a;   /* Very dark blue/slate */
-            --secondary-bg: #1e293b; /* Darker slate */
-            --tertiary-bg: #334155;   /* Lighter slate */
-            --card-bg: rgba(30, 41, 59, 0.75); /* Semi-transparent card - Slightly more opaque */
-            --glass-bg: rgba(51, 65, 85, 0.45); /* Glassmorphism background - Slightly more opaque */
-            --text-primary: #e2e8f0; /* Light gray text */
-            --text-secondary: #94a3b8;/* Muted gray */
-            --border-color: rgba(71, 85, 105, 0.7); /* Slightly stronger border */
-            --input-border: rgba(51, 65, 85, 0.8); /* Input border color */
-            --input-bg: rgba(51, 65, 85, 0.6); /* Input background */
-            --input-focus-bg: var(--secondary-bg); /* Input focus background */
-            --shadow-color: rgba(0, 0, 0, 0.5); /* Darker shadow */
+            /* Core Dark Theme Colors */
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --tertiary-bg: #334155;
+            --card-bg: rgba(30, 41, 59, 0.8); /* Slightly more opaque */
+            --glass-bg: rgba(51, 65, 85, 0.5); /* Adjusted opacity */
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-dark: #e2e8f0; /* Adjusted for dark theme */
+            --text-light: #94a3b8; /* Adjusted for dark theme */
+            --text-lighter: #64748b; /* Adjusted for dark theme */
+            --border-color: rgba(71, 85, 105, 0.7);
+            --input-border: rgba(51, 65, 85, 0.8);
+            --input-bg: rgba(51, 65, 85, 0.6);
+            --input-focus-bg: var(--secondary-bg);
+            --shadow-color: rgba(0, 0, 0, 0.5);
 
             /* Accent Palette */
-            --accent-1: #8b5cf6;   /* Violet */
-            --accent-1-hover: #7c3aed;
-            --accent-2: #2dd4bf;   /* Teal/Cyan */
+            --accent-color: #8b5cf6;   /* Violet - Primary Accent */
+            --accent-hover: #7c3aed;
+            --accent-2: #2dd4bf;   /* Teal/Cyan - Secondary Accent */
             --accent-2-hover: #14b8a6;
-            --glow-color: rgba(45, 212, 191, 0.5);
-            --glow-color-violet: rgba(139, 92, 246, 0.4);
+            --glow-color: rgba(45, 212, 191, 0.5); /* Teal Glow */
+            --glow-color-violet: rgba(139, 92, 246, 0.4); /* Violet Glow */
 
-             /* Gradients */
-             --gradient-accent: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
-             --gradient-accent-hover: linear-gradient(135deg, var(--accent-1-hover) 0%, var(--accent-2-hover) 100%);
-             --gradient-bg: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+            /* Gradients */
+            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-2) 100%);
+            --gradient-accent-hover: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-2-hover) 100%);
+            --gradient-bg: linear-gradient(180deg, #111827 0%, #0f172a 100%);
 
-             /* Status Colors */
-             --success-color: #34d399;
-             --warning-color: #fbbf24;
-             --danger-color: #f87171;
-             --danger-border: rgba(248, 113, 113, 0.5);
-             --danger-glow: rgba(248, 113, 113, 0.2);
+            /* Status Colors */
+            --success-color: #34d399;
+            --warning-color: #fbbf24;
+            --danger-color: #f87171;
+            --danger-border: rgba(248, 113, 113, 0.5);
+            --danger-glow: rgba(248, 113, 113, 0.2);
+
+            /* Error Popup Colors (Themed) */
+            --error-color-popup: var(--danger-color);
+            --error-bg-popup: rgba(49, 27, 37, 0.8); /* Dark red background */
+            --error-text-popup: var(--danger-color);
+            --error-border-popup: var(--danger-border);
         }
 
         /* --- Base Styles --- */
@@ -55,99 +66,97 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--primary-bg);
             background-image: var(--gradient-bg);
-            color: var(--text-primary);
+            color: var(--text-primary); /* Changed default text color */
             line-height: 1.7; font-size: 16px; overflow-x: hidden;
             display: flex; flex-direction: column; min-height: 100vh;
         }
-        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 20px; } /* Allow padding on sides */
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 20px; }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3 { font-weight: 600; color: var(--text-primary); margin-bottom: 0.8em; }
         h2 { font-size: 1.8rem; }
         p { margin-bottom: 1em; color: var(--text-secondary); font-size: 1rem; }
+        /* Links use secondary accent */
         a { text-decoration: none; color: var(--accent-2); transition: color 0.3s ease; }
         a:hover { color: #5eead4; text-decoration: underline;}
 
         /* Abstract background shapes */
         .shape { position: absolute; border-radius: 50%; opacity: 0.1; filter: blur(100px); z-index: -1; pointer-events: none; animation: float 10s infinite ease-in-out alternate; }
-        .shape-1 { width: 500px; height: 500px; background: var(--accent-1); top: -5%; left: -20%; animation-duration: 12s;}
+        .shape-1 { width: 500px; height: 500px; background: var(--accent-color); top: -5%; left: -20%; animation-duration: 12s;}
         .shape-2 { width: 450px; height: 450px; background: var(--accent-2); bottom: -10%; right: -25%; animation-duration: 9s; animation-delay: -3s;}
 
-        /* Button Styles */
+        /* Button Styles (Themed) */
         .btn {
              display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-             background: var(--gradient-accent); color: #fff; padding: 14px 30px; /* Slightly larger */ border-radius: 10px; /* Less rounded */
+             background: var(--gradient-accent); color: #fff; padding: 12px 28px; border-radius: 10px;
              font-weight: 600; font-size: 1rem; transition: all 0.35s ease; border: none;
              cursor: pointer; text-align: center;
              box-shadow: 0 6px 18px var(--glow-color-violet), 0 0 15px var(--glow-color);
              position: relative; overflow: hidden; width: 100%;
         }
         .btn:hover {
-            background: var(--gradient-accent-hover); /* Change gradient on hover */
+            background: var(--gradient-accent-hover);
             box-shadow: 0 8px 25px var(--glow-color-violet), 0 0 25px var(--glow-color);
             transform: translateY(-4px) scale(1.02); text-decoration: none; color: #fff;
         }
-         .btn::after { /* Subtle shine effect */ content: ''; position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; background: rgba(255,255,255,0.6); border-radius: 50%; transform: scale(0) translate(-50%, -50%); transform-origin: center; transition: transform 0.6s ease, opacity 0.8s ease; opacity: 0; }
-         .btn:hover::after { transform: scale(200) translate(-50%, -50%); opacity: 1; transition: transform 0.6s ease, opacity 0s ease; /* Instant opacity on hover */ }
+         .btn::after { content: ''; position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; background: rgba(255,255,255,0.6); border-radius: 50%; transform: scale(0) translate(-50%, -50%); transform-origin: center; transition: transform 0.6s ease, opacity 0.8s ease; opacity: 0; }
+         .btn:hover::after { transform: scale(200) translate(-50%, -50%); opacity: 1; transition: transform 0.6s ease, opacity 0s ease; }
+         .btn:disabled { background: var(--tertiary-bg); cursor: not-allowed; box-shadow: none; transform: none; }
+         .btn:disabled::after { display: none; }
 
         /* --- Header/Navigation (Themed) --- */
         .main-header { background: rgba(15, 23, 42, 0.88); padding: 18px 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
         .main-header .container { display: flex; justify-content: space-between; align-items: center; position: relative; }
-        .logo { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
-        .logo i { color: var(--accent-2); /* Add an icon to logo */ }
-        .logo span { color: var(--accent-2); }
+        .logo { font-size: 1.5rem; /* Adjusted size */ font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .logo i { color: var(--accent-2); font-size: 1.4rem; } /* Wallet Icon for logo */
+        .logo span { color: var(--accent-2); } /* Inspire in accent color */
         .main-nav { display: flex; }
-        .main-nav a { margin-left: 35px; font-weight: 500; color: var(--text-secondary); position: relative; padding-bottom: 8px; font-size: 1rem; transition: color 0.3s ease; }
+        .main-nav a { margin-left: 30px; /* Slightly less margin */ font-weight: 500; color: var(--text-secondary); position: relative; padding-bottom: 8px; font-size: 0.95rem; /* Slightly smaller nav links */ transition: color 0.3s ease; }
         .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 3px; background: var(--gradient-accent); border-radius: 3px; transition: width 0.3s ease; }
         .main-nav a:hover::after, .main-nav a.active-nav::after { width: 60%; }
         .main-nav a:hover, .main-nav a.active-nav { color: var(--text-primary); text-decoration: none;}
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: var(--text-primary); }
 
-        /* --- Login Page Styles - ENHANCED --- */
-        #login-section { width: 100%;
-        margin-left: 10%; }
-
-        .login-container {
-            background: var(--card-bg);
-            border-radius: 18px; /* Slightly more rounded */
+        /* --- Authentication Section Styles (Themed) --- */
+        #auth-section { display: flex; align-items: center; justify-content: center; padding: 60px 0; /* Reduced padding */ min-height: calc(100vh - 180px); /* Adjust based on header/footer */ }
+        .auth-container {
+            background: var(--card-bg); /* Use card background */
+            border-radius: 18px; /* More rounded */
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(15px); /* Stronger blur */
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 10px 40px 5px var(--shadow-color); /* Enhanced shadow */
-            padding: 45px 50px; /* More padding */
-            max-width: 480px;
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px 5px var(--shadow-color);
+            padding: 40px 45px; /* Adjusted padding */
+            max-width: 480px; /* Slightly wider */
             width: 100%;
             animation: fadeInScaleUp 0.8s ease-out forwards;
-            position: relative;
-            z-index: 1;
-            overflow: hidden; /* Hide overflowing elements like the accent bar */
+            position: relative; z-index: 1; overflow: hidden;
+        }
+         /* Decorative Accent Bar */
+        .auth-container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 5px; background: var(--gradient-accent); z-index: 2;
         }
 
-        /* Decorative Accent Bar */
-        .login-container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 5px; /* Bar height */
-            background: var(--gradient-accent);
-            z-index: 2; /* Above background, below content */
-        }
+        .auth-tabs { display: flex; margin-bottom: 35px; border-bottom: 1px solid var(--border-color); }
+        .tab-button { flex: 1; padding: 12px 15px; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: color 0.3s ease, border-bottom 0.3s ease; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+        /* Active tab uses primary accent */
+        .tab-button.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
-        .login-container h2 { text-align: center; margin-bottom: 35px; font-size: 2rem; /* Slightly larger */ font-weight: 700; /* Bolder */ }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        .auth-form h2 { text-align: center; margin-bottom: 30px; font-size: 1.9rem; } /* Centered H2 */
 
-        .login-form .form-group {
-             margin-bottom: 28px;
-             position: relative; /* Needed for icons and error messages */
-        }
-        .login-form label { display: block; font-weight: 500; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.5px; }
-        .login-form label.required::after { content: ' *'; color: var(--danger-color); }
+        .form-group { margin-bottom: 25px; position: relative; } /* Added relative positioning */
+        .form-group label { display: block; font-weight: 500; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.5px; }
+        .form-group label.required::after { content: ' *'; color: var(--danger-color); } /* Style for required labels */
 
         .input-group { position: relative; } /* Wrapper for input and icon */
 
-        .login-form input[type="email"],
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
+        /* Themed Input Fields */
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
             width: 100%;
-            padding: 14px 20px 14px 50px; /* Adjusted padding for icon */
+            padding: 14px 20px 14px 50px; /* Padding for icon */
             border: 1px solid var(--input-border);
             border-radius: 10px; /* Match button */
             font-size: 1rem;
@@ -156,104 +165,60 @@
             background-color: var(--input-bg);
             letter-spacing: 0.3px;
         }
-
-        /* Input Icon Styling */
+         /* Input Icon Styling */
         .input-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            pointer-events: none; /* Don't block input interaction */
+            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+            color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;
             transition: color 0.3s ease;
         }
-        .login-form input:focus + .input-icon {
-            color: var(--accent-2); /* Change icon color on focus */
-        }
+        .form-group input:focus + .input-icon { color: var(--accent-2); } /* Icon color on focus */
 
-        /* Password Toggle Icon */
+         /* Password Toggle Icon */
         .password-toggle-icon {
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-            z-index: 3; /* Ensure it's clickable */
+            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+            color: var(--text-secondary); cursor: pointer; font-size: 1.1rem;
+            transition: color 0.3s ease; z-index: 3;
         }
         .password-toggle-icon:hover { color: var(--accent-2); }
 
-        /* Input Focus State */
-        .login-form input:focus {
-            outline: none;
-            border-color: var(--accent-2);
-            box-shadow: 0 0 0 3px var(--glow-color);
-            background-color: var(--input-focus-bg);
+        /* Input Focus State (using secondary accent glow) */
+        .form-group input:focus {
+            outline: none; border-color: var(--accent-2);
+            box-shadow: 0 0 0 3px var(--glow-color); background-color: var(--input-focus-bg);
         }
 
-        /* Error State Styling */
-        .form-group.has-error input {
-            border-color: var(--danger-border);
-            box-shadow: 0 0 0 3px var(--danger-glow);
-        }
-        .form-group.has-error .input-icon {
-            color: var(--danger-color);
-        }
-        .error-message {
-            color: var(--danger-color);
-            font-size: 0.8rem;
-            margin-top: 6px;
-            display: block; /* Changed from none to block */
-            opacity: 0; /* Start hidden */
-            height: 0; /* Start with no height */
-            overflow: hidden;
-            transition: opacity 0.3s ease, height 0.3s ease, margin-top 0.3s ease;
-        }
-        .form-group.has-error .error-message {
-            opacity: 1;
-            height: auto; /* Adjust height automatically */
-            margin-top: 6px;
-        }
-
-        .form-options {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 35px; font-size: 0.9rem;
-        }
+        /* Form Options (Checkbox, Forgot Password) */
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.9rem; }
         .form-options .checkbox-group { display: flex; align-items: center; }
          .form-options input[type="checkbox"] {
-            appearance: none; /* Remove default */
-            width: 16px; height: 16px; border: 1px solid var(--text-secondary);
-            border-radius: 4px; margin-right: 10px; cursor: pointer;
-            position: relative; transition: background-color 0.2s ease, border-color 0.2s ease;
-            vertical-align: middle; /* Align better with label */
+            appearance: none; width: 16px; height: 16px; border: 1px solid var(--text-secondary);
+            border-radius: 4px; margin-right: 10px; cursor: pointer; position: relative;
+            transition: background-color 0.2s ease, border-color 0.2s ease; vertical-align: middle;
          }
-         .form-options input[type="checkbox"]:checked {
-            background-color: var(--accent-2); border-color: var(--accent-2);
-         }
-         /* Checkmark style */
+         /* Use secondary accent for checkbox */
+         .form-options input[type="checkbox"]:checked { background-color: var(--accent-2); border-color: var(--accent-2); }
          .form-options input[type="checkbox"]:checked::after {
-            content: '\f00c'; /* Font Awesome check */
-            font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            color: var(--primary-bg); /* Dark checkmark */
-            font-size: 0.7rem;
-            position: absolute; top: 50%; left: 50%;
+            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            color: var(--primary-bg); font-size: 0.7rem; position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
          }
          .form-options label { margin-bottom: 0; font-weight: 400; color: var(--text-secondary); cursor: pointer;}
         .form-options a { color: var(--text-secondary); font-size: 0.9rem; }
         .form-options a:hover { color: var(--accent-2); }
 
-        .login-form button[type="submit"] { margin-top: 15px; /* More space before button */ }
+        /* Signup Form Specific Styles */
+        #signup-form p { color: var(--text-secondary); }
+        #signup-form .signup-message { color: var(--warning-color); /* Use warning color for the message */ font-weight: 500; border: 1px dashed var(--warning-color); padding: 15px; border-radius: 8px; background-color: rgba(251, 191, 36, 0.1); margin-bottom: 25px; }
 
-        .signup-link {
-             text-align: center; margin-top: 35px; font-size: 0.95rem;
-             color: var(--text-secondary); border-top: 1px solid var(--border-color); /* Add separator */ padding-top: 25px; /* Space after separator */
-        }
-        .signup-link a { font-weight: 600; color: var(--accent-2); }
-        .signup-link a:hover { color: #5eead4; }
+        .form-group.terms { font-size: 0.9rem; display: flex; align-items: start; }
+        .form-group.terms input[type="checkbox"] { margin-right: 10px; margin-top: 4px; flex-shrink: 0; }
+        .form-group.terms label { font-weight: 400; color: var(--text-secondary); line-height: 1.5; }
+        /* Terms links use secondary accent */
+        .form-group.terms a { font-weight: 500; text-decoration: underline; color: var(--accent-2); }
+        .form-group.terms a:hover { color: #5eead4; }
+        /* Center the signup button link */
+        #signup-form > a { display: block; text-align: center; margin-top: 10px; }
+
 
         /* --- Footer (Themed) --- */
         .main-footer { background-color: #0f172a; color: #94a3b8; padding: 50px 0 20px 0; margin-top: auto; border-top: 1px solid var(--tertiary-bg); }
@@ -264,51 +229,86 @@
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: #94a3b8; transition: color 0.3s ease, padding-left 0.3s ease; }
+        /* Footer link hover uses secondary accent */
         .footer-col ul li a:hover { color: var(--accent-2); padding-left: 5px; text-decoration: none; }
         .footer-socials a { display: inline-flex; align-items: center; justify-content: center; color: #94a3b8; background-color: rgba(51, 65, 85, 0.5); width: 40px; height: 40px; border-radius: 50%; text-align: center; margin-right: 10px; font-size: 1rem; transition: all 0.3s ease; }
+        /* Social link hover uses secondary accent */
         .footer-socials a:hover { background-color: var(--accent-2); color: var(--primary-bg); transform: scale(1.1); text-decoration: none; }
         .footer-bottom { border-top: 1px solid var(--tertiary-bg); padding-top: 25px; text-align: center; font-size: 0.9rem; color: #64748b; }
 
         /* --- Animations --- */
         @keyframes fadeInScaleUp { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
         @keyframes float { 0% { transform: translateY(0px) translateX(0px) rotate(0deg); } 50% { transform: translateY(-30px) translateX(25px) rotate(10deg); } 100% { transform: translateY(0px) translateX(0px) rotate(0deg); } }
 
+         /* --- Wrong Credentials Popup Style (Themed) --- */
+        .popup {
+            display: none; position: fixed; left: 50%; top: 50%;
+            transform: translate(-50%, -50%); min-width: 280px;
+            background-color: var(--error-bg-popup); /* Themed background */
+            color: var(--error-text-popup); /* Themed text */
+            border: 1px solid var(--error-border-popup); /* Themed border */
+            border-radius: 10px; /* Match other elements */
+            padding: 25px 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Darker shadow */
+            z-index: 1001; text-align: center;
+            animation: fadeInScaleUp 0.3s ease-out;
+            backdrop-filter: blur(5px); /* Optional glass effect for popup */
+             -webkit-backdrop-filter: blur(5px);
+        }
+        .popup p {
+            margin-bottom: 20px; font-size: 1.15rem; font-weight: 600;
+            color: var(--error-text-popup); /* Ensure themed text color */
+        }
+        .popup button {
+            background-color: var(--error-color-popup); /* Use themed error color */
+            color: #fff; /* White text on error button */
+            padding: 9px 22px; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 0.95rem; font-weight: 500; width: auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .popup button:hover {
+            background-color: #f75f5f; /* Slightly lighter red on hover */
+            transform: translateY(-2px);
+        }
 
-        /* --- Responsive Design --- */
+
+        /* --- Responsive Design (Adjusted for Dark Theme) --- */
         @media (max-width: 992px) {
              .menu-toggle { display: block; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+             /* Themed mobile nav background */
              .main-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(15, 23, 42, 0.98); padding: 15px 0; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); text-align: center; border-top: 1px solid var(--border-color); }
              .main-nav.active { display: flex; }
              .main-nav a { margin: 10px 20px; padding: 12px 0; width: auto; color: var(--text-secondary);}
              .main-nav a:hover { color: var(--text-primary); background: rgba(51, 65, 85, 0.3); border-radius: 5px;}
              .main-nav a::after { display: none; }
         }
-
         @media (max-width: 768px) {
              main { padding: 40px 20px; }
              h2 { font-size: 1.7rem; }
-             .login-container { padding: 40px; }
+             .auth-container { padding: 35px 30px; } /* Adjust padding */
              .footer-content { text-align: center; }
              .footer-col { flex-basis: 100%; margin-bottom: 30px; align-items: center; }
              .footer-col h4::after { left: 50%; transform: translateX(-50%); }
              .footer-col ul li a:hover { padding-left: 0; }
+             #auth-section { padding: 50px 0; }
         }
-
         @media (max-width: 576px) {
              body { font-size: 15px; }
              h2 { font-size: 1.6rem; }
-             .logo { font-size: 1.4rem; }
+             .logo { font-size: 1.3rem; }
              .container { padding: 0 15px; }
              main { padding: 30px 15px; }
-             .login-container { padding: 35px 25px; /* Adjust padding for smaller screens */ max-width: 100%; }
-             .login-form input[type="email"], .login-form input[type="password"] { padding: 13px 18px 13px 45px; font-size: 0.95rem;}
+             .auth-container { padding: 30px 20px; /* Further adjust padding */ max-width: 100%; }
+             .tab-button { font-size: 1rem; padding: 10px; }
+             .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"] { padding: 13px 18px 13px 45px; font-size: 0.95rem;}
              .input-icon { left: 15px; font-size: 1rem; }
              .password-toggle-icon { right: 15px; font-size: 1rem; }
              .form-options { flex-direction: column; align-items: flex-start; gap: 15px; }
              .btn { font-size: 0.95rem; padding: 13px 25px; }
-             .signup-link { font-size: 0.9rem; padding-top: 20px; margin-top: 30px; }
+             .popup { padding: 20px 25px; min-width: 250px; }
+             .popup p { font-size: 1.1rem; }
         }
 
     </style>
@@ -318,85 +318,118 @@
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
 
-    <!-- Header -->
+    <!-- Header (Themed) -->
     <header class="main-header">
         <div class="container">
-            <a href="index.html" class="logo">
+            <!-- Updated Logo -->
+            <a href="https://yrinspireit.github.io/" class="logo">
                 <i class="fas fa-wallet"></i> <!-- Wallet Icon -->
                 Your <span>Inspire</span> IT
             </a>
             <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
-             <nav class="main-nav" id="main-nav">
-                
-                 <a href="wallet-info.html">Wallet</a>
-                 <a href="services.html">About Us</a>
-                 <a href="help.html">FAQ</a>
-                 <a href="auth.html" class="active-nav">Login / Sign Up</a>
-                 <a href="#">Main Site</a>
-             </nav>
+            <nav class="main-nav" id="main-nav">
+                 <!-- Update nav links as needed for wallet context -->
+                <a href="https://yrinspireit.github.io/">Home</a>
+                <a href="https://yrinspireit.github.io/about">About Us</a>
+                <a href="https://yrinspireit.github.io/contact">Contact Us</a>
+                <a href="https://yrinspireit.github.io/report">Report</a>
+                <a href="https://yrinspireit.github.io/faq">FAQ</a>
+                <!-- Assuming this is the active page -->
+                <a href="#" class="active-nav">Login/Sign Up</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Login Content -->
     <main>
-        <section id="login-section">
-            <div class="login-container glass-card">
-                <h2>Login to EarnWell</h2> <!-- Slightly shorter title -->
+        <!-- Authentication Section -->
+        <section id="auth-section">
+            <!-- Use the themed container class -->
+            <div class="auth-container">
+                 <!-- Decorative Accent Bar -->
+                 <div class="auth-container::before"></div>
 
-                <form class="login-form" id="loginForm" action="#" method="post" novalidate> <!-- Added novalidate to handle validation via JS if needed -->
-                    <div class="form-group"> <!-- Added error state class for demo -->
-                        <label for="login-email" class="required">Email Address</label>
+                <div class="auth-tabs">
+                    <button class="tab-button active" data-tab="login">Login</button>
+                    <button class="tab-button" data-tab="signup">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <h2>Wallet Access</h2> <!-- Updated Heading -->
+                    <div class="form-group">
+                        <label for="login-userid" class="required">User ID / Email</label> <!-- Added 'required' class styling -->
+                        <!-- Added input-group and icon -->
                         <div class="input-group">
-                            <input type="email" id="login-email" name="email" required placeholder="you@example.com" aria-describedby="email-error">
-                            <i class="fas fa-envelope input-icon"></i> <!-- Email Icon -->
+                            <input type="text" id="login-userid" name="userid" required placeholder="Enter User ID or Email">
+                            <i class="fas fa-user input-icon"></i>
                         </div>
-                        <span class="error-message" id="email-error"></span> <!-- Error message placeholder -->
                     </div>
-
                     <div class="form-group">
                         <label for="login-password" class="required">Password</label>
+                         <!-- Added input-group and icons -->
                         <div class="input-group">
-                            <input type="password" id="login-password" name="password" required placeholder="Enter your password" aria-describedby="password-error">
-                            <i class="fas fa-lock input-icon"></i> <!-- Lock Icon -->
-                            <i class="fas fa-eye password-toggle-icon" id="togglePassword"></i> <!-- Eye Icon -->
+                            <input type="password" id="login-password" name="password" required placeholder="Enter Password">
+                            <i class="fas fa-lock input-icon"></i>
+                            <i class="fas fa-eye password-toggle-icon" id="togglePassword"></i> <!-- Added eye icon -->
                         </div>
-                         <span class="error-message" id="password-error"></span> <!-- Error message placeholder -->
                     </div>
-
                     <div class="form-options">
                         <div class="checkbox-group">
                             <input type="checkbox" id="remember-me" name="remember">
                             <label for="remember-me">Remember Me</label>
                         </div>
-                        <a href="#">Forgot Password?</a>
+                        <a href="https://yrinspireit.github.io/sorry">Forgot Password?</a>
                     </div>
-
+                    <!-- Button uses themed .btn class -->
                     <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Secure Login</button>
                 </form>
 
-                <div class="signup-link">
-                    Don't have an account? <a href="signup.html">Sign Up Now</a>
-                </div>
-            </div>
+                <!-- Sign Up Form -->
+                <form id="signup-form" class="auth-form"> <!-- Removed action/method -->
+                    <h2>Create Wallet Account</h2> <!-- Updated Heading -->
+                    <p style="margin-top: -15px; margin-bottom: 20px; font-size: 0.95rem;">Join Your Inspire IT Wallet today!</p>
+                    <!-- Themed message box -->
+                    <div class="signup-message">
+                         <i class="fas fa-info-circle"></i> Currently, only Referral Teams can create new accounts. Click below to learn more or contact support.
+                    </div>
+                     <div class="form-group terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the Your Inspire IT <a href="https://yrinspireit.github.io/sorry">Terms of Service</a> and <a href="https://yrinspireit.github.io/sorry">Privacy Policy</a>.</label>
+                    </div>
+                    <!-- Link wraps the button for navigation -->
+                    <a href="https://yrinspireit.github.io/signup">
+                        <button type="button" class="btn"><i class="fas fa-user-plus"></i> Request Account</button> <!-- Changed text -->
+                    </a>
+                </form>
+
+            </div> <!-- End of auth-container -->
         </section>
+
+         <!-- Wrong Credentials Popup HTML (Themed styles applied via CSS) -->
+        <div id="wrongCredentialsPopup" class="popup">
+            <p><i class="fas fa-exclamation-triangle"></i> Invalid Credentials!</p> <!-- Added icon -->
+            <button onclick="closePopup()">Try Again</button> <!-- Changed button text -->
+        </div>
+
     </main>
 
-    <!-- Footer -->
-     <footer class="main-footer">
+    <!-- Footer (Themed) -->
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="#">Our Mission</a></li><li><a href="#">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
-                 <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center / FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Report</a></li><li><a href="#">Payment Info</a></li></ul></div>
-                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Earning Disclaimer</a></li></ul></div>
-                 <div class="footer-col" style="display: none;"><h4>Connect With Us</h4><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+                 <!-- Footer Links Updated -->
+                 <div class="footer-col"><h4>About Wallet</h4><ul><li><a href="https://yrinspireit.github.io/about">Our Mission</a></li><li><a href="https://yrinspireit.github.io/#how-it-works">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
+                 <div class="footer-col"><h4>Support</h4><ul><li><a href="https://yrinspireit.github.io/faq">Help Center / FAQ</a></li><li><a href="https://yrinspireit.github.io/contact">Contact Us</a></li><li><a href="https://yrinspireit.github.io/report">Report</a></li><li><a href="https://yrinspireit.github.io/sorry">Payment Info</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal</h4><ul><li><a href="https://yrinspireit.github.io/sorry">Terms of Service</a></li><li><a href="https://yrinspireit.github.io/sorry">Privacy Policy</a></li><li><a href="https://yrinspireit.github.io/sorry">Cookie Policy</a></li><li><a href="https://yrinspireit.github.io/sorry">Earning Disclaimer</a></li></ul></div>
+                 <div class="footer-col" style="display: none;"><h4>Connect</h4><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
             </div>
             <div class="footer-bottom">
-                 © 2022-2025 Your Inspire IT. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: var(--accent-1);"></i>.
+                 © 2022-2025 Your Inspire IT Wallet. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i>.
             </div>
         </div>
-     </footer>
+    </footer>
 
     <script>
         // --- Mobile Menu Toggle ---
@@ -411,74 +444,185 @@
             });
         }
 
-        // --- Password Visibility Toggle ---
+        // --- Login/Sign Up Tab Switcher ---
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const authForms = document.querySelectorAll('.auth-form');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                authForms.forEach(form => {
+                    form.classList.toggle('active', form.id === `${targetTab}-form`);
+                });
+            });
+        });
+
+         // --- Password Visibility Toggle ---
         const togglePassword = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('login-password');
-
         if (togglePassword && passwordInput) {
             togglePassword.addEventListener('click', function () {
-                // Toggle the type attribute
                 const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
                 passwordInput.setAttribute('type', type);
-
-                // Toggle the icon
                 this.classList.toggle('fa-eye');
                 this.classList.toggle('fa-eye-slash');
             });
         }
 
-        // --- Basic Form Validation Example (Client-side) ---
-        // This is a very basic example. Real-world validation is more complex.
-        const loginForm = document.getElementById('loginForm');
-        const emailInput = document.getElementById('login-email');
-        const emailError = document.getElementById('email-error');
-        const passwordError = document.getElementById('password-error');
 
-        if (loginForm) {
+        // --- LOGIN LOGIC (Cookie Name Changed) ---
+
+        // User Credentials (Keep as is)
+        const validUsers = { "admin": "1234", "tester": "1234", "user1": "pass1", "user2": "pass2", "user3": "pass3", "user4": "pass4", "user5": "pass5", "user6": "pass6" };
+
+        // **NEW COOKIE NAME**
+        const COOKIE_NAME = 'walletSessionUser'; // Changed cookie name
+
+        // Cookie Functions (Using COOKIE_NAME)
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            // Use SameSite=Lax and Secure for better security (requires HTTPS)
+            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax; Secure";
+            console.log(`Cookie set: ${name}=${value}`);
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Login Form Submission Handler (Using COOKIE_NAME)
+        const loginForm = document.getElementById('login-form');
+        const submitButton = loginForm.querySelector('button[type="submit"]');
+
+        if(loginForm) {
             loginForm.addEventListener('submit', function(event) {
-                let isValid = true;
+                event.preventDefault();
 
-                // Clear previous errors
-                emailInput.parentElement.parentElement.classList.remove('has-error');
-                passwordInput.parentElement.parentElement.classList.remove('has-error');
-                emailError.textContent = '';
-                passwordError.textContent = '';
+                const userIdInput = document.getElementById('login-userid');
+                const passwordInputForLogin = document.getElementById('login-password'); // Use specific var name
+                const userId = userIdInput.value.trim();
+                const password = passwordInputForLogin.value;
 
+                 // Basic validation (optional but good)
+                 if (!userId || !password) {
+                     console.log('Login failed: Fields cannot be empty.');
+                     showPopup(); // Show popup even for empty fields
+                     return;
+                 }
 
-                // Email Validation (Basic)
-                if (emailInput.value.trim() === '') {
-                    isValid = false;
-                    emailInput.parentElement.parentElement.classList.add('has-error');
-                    emailError.textContent = 'Email address is required.';
-                } else if (!/\S+@\S+\.\S+/.test(emailInput.value)) { // Basic email format check
-                     isValid = false;
-                     emailInput.parentElement.parentElement.classList.add('has-error');
-                     emailError.textContent = 'Please enter a valid email address.';
-                }
+                // Show loading state
+                 if(submitButton) {
+                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+                     submitButton.disabled = true;
+                 }
 
-                // Password Validation (Basic)
-                if (passwordInput.value.trim() === '') {
-                    isValid = false;
-                    passwordInput.parentElement.parentElement.classList.add('has-error');
-                    passwordError.textContent = 'Password is required.';
-                }
-                // Add more password checks here if needed (e.g., minimum length)
-
-
-                if (!isValid) {
-                    event.preventDefault(); // Prevent form submission if validation fails
-                } else {
-                     // Optionally show a loading indicator on the button
-                     const submitButton = loginForm.querySelector('button[type="submit"]');
-                     if(submitButton) {
-                         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging In...';
-                         submitButton.disabled = true;
-                     }
-                     // The form will submit now if not prevented.
-                     // In a real app, you might use fetch() here to send data asynchronously.
-                }
+                // Simulate check
+                setTimeout(() => {
+                    if (validUsers[userId] && validUsers[userId] === password) {
+                        console.log('Login successful for:', userId);
+                        // Set cookie with the NEW NAME
+                        setCookie(COOKIE_NAME, userId, 1);
+                        // Redirect on success
+                        window.location.href = 'https://pay-yourinspireit.github.io/active-account/v2';
+                    } else {
+                        console.log('Login failed for:', userId);
+                        showPopup(); // Show the popup on failure
+                         // Reset button state
+                         if(submitButton) {
+                             submitButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
+                             submitButton.disabled = false;
+                         }
+                    }
+                }, 500); // Simulate delay
             });
         }
+
+
+        // --- Popup Logic ---
+        const popup = document.getElementById('wrongCredentialsPopup');
+        function showPopup() {
+            if (popup) { popup.style.display = 'block'; }
+        }
+        function closePopup() {
+            if (popup) { popup.style.display = 'none'; }
+             // Optional: Re-enable login button if needed when popup is closed manually
+             if(submitButton && submitButton.disabled) {
+                 submitButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
+                 submitButton.disabled = false;
+             }
+        }
+
+
+        // --- Auto-Redirection Logic (Using COOKIE_NAME) ---
+        (function() {
+            // ** Target page IF user is ALREADY LOGGED IN and tries to visit THIS login page **
+            const redirectTargetIfLoggedIn = 'https://pay-yourinspireit.github.io/active-account/v2'; // e.g., Dashboard or Wallet page
+
+            // Use the NEW cookie name here
+            const isLoggedIn = getCookie(COOKIE_NAME);
+            const currentPagePath = window.location.pathname.split('/').pop(); // Get the filename (e.g., 'auth.html')
+
+            // Add the filename(s) of THIS login/auth page
+            const loginPageFilenames = ['auth.html', 'login.html', '']; // Add '' for root access if login is at the root
+
+            if (isLoggedIn && isLoggedIn !== '') {
+                // Check if the current page filename is one of the login pages
+                if (loginPageFilenames.includes(currentPagePath)) {
+                     console.log(`User '${isLoggedIn}' is already logged in (${COOKIE_NAME} found). Redirecting from ${currentPagePath} to ${redirectTargetIfLoggedIn}`);
+                     window.location.href = redirectTargetIfLoggedIn;
+                } else {
+                     console.log(`User '${isLoggedIn}' is logged in (${COOKIE_NAME} found), but not on a restricted login page (${currentPagePath}). No redirect.`);
+                }
+            } else {
+                 console.log(`User not logged in (${COOKIE_NAME} not found or empty) on ${currentPagePath}. No redirect.`);
+            }
+        })(); // IIFE
+
+
+
+// --- প্রয়োজনীয়: কুকি পড়ার ফাংশন ---
+// এই ফাংশনটি অবশ্যই এই স্ক্রিপ্টের আগে লোড হতে হবে অথবা এর মধ্যেই থাকতে হবে।
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// --- রিডাইরেকশন লজিক ---
+(function() {
+    const cookieNameToCheck = 'walletSessionUser'; // যে কুকির নাম চেক করতে চান
+    const redirectUrl = 'https://www.google.com'; // যেখানে রিডাইরেক্ট করতে চান
+
+    const userSession = getCookie(cookieNameToCheck);
+
+    if (userSession && userSession !== '') {
+        // কুকি পাওয়া গেছে এবং খালি নয়
+        console.log(`Cookie '${cookieNameToCheck}' found with value '${userSession}'. Redirecting to ${redirectUrl}`);
+        window.location.href = redirectUrl;
+    } else {
+        // কুকি পাওয়া যায়নি অথবা খালি
+        console.log(`Cookie '${cookieNameToCheck}' not found or is empty. No redirect.`);
+        // এখানে আপনি চাইলে অন্য কোনো কাজ করতে পারেন, যেমন লগইন ফর্ম দেখানো
+    }
+})(); // ফাংশনটি অবিলম্বে কল করা হচ্ছে (Immediately Invoked Function Expression - IIFE)
 
     </script>
 
